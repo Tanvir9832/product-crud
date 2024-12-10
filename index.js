@@ -8,7 +8,7 @@ const path = require("path");
 
 app.use(express.json());
 app.use(cors());
-app.use("/api/", productRouter);
+app.use("/api", productRouter);
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 app.get("*", (req, res) => {
