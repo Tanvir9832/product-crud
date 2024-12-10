@@ -1,7 +1,7 @@
 const express = require("express");
 const { databaseConnection } = require("./src/db");
 const app = express();
-require("dotenv").config("../env");
+require("dotenv").config();
 const cors = require("cors");
 const productRouter = require("./src/router");
 const path = require("path");
