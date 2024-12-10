@@ -8,6 +8,11 @@ const productRouter = require("./router");
 app.use(express.json());
 app.use(cors());
 app.use("/api/", productRouter);
+app.use("*", (req, res) => {
+  res.status(404).json({
+    issue: "wrong url",
+  });
+});
 
 databaseConnection();
 app.listen(process.env.PORT || 4000, () => {

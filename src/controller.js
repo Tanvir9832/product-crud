@@ -37,14 +37,14 @@ const updateProduct = async (req, res) => {
     );
 
     if (!updatedProduct) {
-      return res.status(404).json({ message: "Product not found" });
+      return res.status(404).json({ issue: "Product not found" });
     }
 
     return res
       .status(200)
-      .json({ message: "product update successfully", updatedProduct });
+      .json({ message: "product updated successfully", updatedProduct });
   } catch (error) {
-    res.status(500).json({ message: "Error updating product", error });
+    return res.status(500).json({ issue: error.message || "product update failed" });
   }
 };
 
@@ -57,9 +57,9 @@ const deleteProduct = async (req, res) => {
       return res.status(404).json({ message: "Product not found" });
     }
 
-    res.json({ message: "Product deleted successfully", deletedProduct });
+    return res.json({ message: "Product deleted successfully", deletedProduct });
   } catch (error) {
-    res.status(500).json({ message: "Error deleting product", error });
+    return res.status(500).json({ issue: error.message || "product deleted failed" });
   }
 };
 
