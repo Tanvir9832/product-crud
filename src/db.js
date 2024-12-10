@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-export const databaseConnection = async () => {
+exports.databaseConnection = async () => {
   try {
-    await mongoose.connect();
+    await mongoose.connect(process.env.DATABASE_URL);
     console.log("database connected!");
   } catch (error) {
     console.log(error.message || "database connection failed");
